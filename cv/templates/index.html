@@ -1,307 +1,266 @@
 {% load static %}
 
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-        <!-- Basic Page Requirement –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <meta charset="utf-8"/>
-		{% if title %}
-			<title>{{ title }}</title>
-		{% else %}
-			<title>Sarah Marion</title>
-        {% endif %}
-        <meta name="description" content="">
-  	    <meta name="author" content="Sarah Marion">
-		
-		<!-- Mobile Specific Metas –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <!-- Basic Page Requirement –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8"/>
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Sarah Marion</title>
+    {% endif %}
+    <meta name="description" content="">
+    <meta name="author" content="Sarah Marion">
+    <!-- Mobile Specific Metas –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<!--[if lte IE 8]><script src="{% static 'js/ie/html5shiv.js' %}"></script><![endif]-->
-		<link rel="stylesheet" href="{% static 'css/main.css' %}">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-		<!--[if lte IE 8]><link rel="stylesheet" href="{% static 'css/ie8.css' %}" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="{% static 'css/ie9.css' %}" /><![endif]-->
-		<link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!-- [if lte IE 8]><script src="{% static 'js/ie/html5shiv.js' %}"></script><![endif] -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!--[if lte IE 8]><link rel="stylesheet" href="{% static 'css/ie8.css' %}" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="{% static 'css/ie9.css' %}" /><![endif]-->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+</head>
 
-	</head>
-	<body>
+<body>
+    <div id="mySidenav" class="sidenav">
+        <!-- Logo -->
+        <div id="logo">
+            <img id='trapezium' src="{{ info.my_image.url }}" alt="my pic" width='28%'/>
+        </div>
+        <!-- Sidenav -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#top" id="top-link" class="skel-layers-ignoreHref">
+            <span class="icon fa-home">Intro</span></a>
+        <a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref">
+            <span class="icon fa-th">Skills</span></a>
+        <a href="#projects" id="about-link" class="skel-layers-ignoreHref">
+            <span class="icon fa-user">PROJECTS</span></a>
+        <a href="#about" id="top-link" class="skel-layers-ignoreHref">
+            <span class="icon fa-home">About Me<Meta:vp></Meta:vp></span></a>
+        <a href="#contact" id="contact-link" class="skel-layers-ignoreHref">
+            <span class="icon fa-envelope">Contact Me</span></a>
+        <br>
+        <div class="bottom">
+            <!-- Social Icons -->
+            <ul class="icons">
+                <li>
+                    <a target="_blank" href="{{ info.my_github }}" class="icon fa-github">
+                        <span class="label">Github</span></a>
+                </li>
+                <!-- <li>
+                    <a target="_blank" href="{{ info.my_linkedin }}" class="icon fa-linkedin-in">
+                        <span class="label">LinkedIn</span></a>
+                </li> -->
+                <li>
+                    <a href="mailto:{{ info.my_email }}" target="_blank" class="icon fa-envelope">
+                        <span class="label">Email</span></a>
+                </li>
+            </ul>
+        </div>    
+    </div>
+    {% if messages %}
+    <div id="alert-email" style="width: auto;
+    background-color: rgb(122, 24, 109);
+    text-align: center;">
+        {% for message in messages %}
+            <strong>{{ message }}</strong>
+        {% endfor %}
+    </div>
+    {% endif %}
 
-		{% if messages %}
-			<div id="alert-email" style="width: auto;
-		  background-color: rgb(122, 24, 109);
-		  text-align: center;">
-				{% for message in messages %}
-					<strong>{{ message }}</strong>
-				{% endfor %}
-			</div>
-		{% endif %}
+    <!-- Main -->
+<div id="main">
+        <span style="font-size:30px;cursor:pointer; 
+        position: absolute;
+       color: rgb(122, 24, 109);
+       left: 50px;
+       top: 60px;" onclick="openNav()">&#9776;</span>
+    <a href="#" id="scroll" style="display: none;">
+        <span></span></a>
 
-		<!-- Header -->
-		<div id="header">
+        <!-- Intro -->
+        <section id="top" class="one dark cover">
+            <div class="container">
+                <header>
+                    <!-- <div class="img"></div> -->
+                    <h1 class="alt">
+                        <h2>I am 
+                            {{ info.my_name }}</h2>
+                    </h1>
+                    <h2>{{ info.my_title }}</h2>
+                    based in
+                    <strong>Nairobi Kenya</strong>
+                    
+                    <p><strong>I'm a Nairobi based software developer creating awesome and effective
+                        visual identities for people from all walks of life around the globe.
+                        Let's start scrolling and learn more about me.</strong></p>
+                        <footer>
+                            <a href="#portfolio" id='next'>
+                                <i class="fas fa-angle-double-down"></i>
+                            </a>
+                        </footer>
+                    
+                    <h2 id="about">About Me</h2>
+                    <p>Just a simple lady who wants to create amazing stuff-</p><br/>
+                    <p>That pretty much sums it up.Whether it's solving a complex design problem,or just fixing the kettle at home, I aim for intuitive solutions that will improve the lives around me.I am currently studying software development at Moringa School.Prior to
+                        this, I have worked in various fields like travel and tours,marketing and was an entrepreneur ...Oh,and I love teaching myself new concepts like Django and Flask,so I developed this site myself with code only a mother could love.</p>
+                </header>
+                <footer>
+                    <a href="#portfolio" id='next'>
+                        <i class="fas fa-angle-double-down"></i>
+                    </a>
+                </footer>
+            </div>
+        </section>
 
-			<div class="top">
+    <!-- Portfolio -->
+    <section id="portfolio" class="two">
+        <div class="container">
+            <header>
+                <h2>WHAT I DO</h2>
+                Some of the languages and frameworks that I'm proficient in include :
+            </header>
+            <div class="row">
+                <div class="4u 12u$(mobile) sk">
+                    <i title="python" class="devicon-python-plain colored"></i>
+                </div>
+                <div class="4u 12u$(mobile) sk">
+                    <i title="django framework" class="devicon-django-plain colored"></i>
+                </div>
+                <div class="4u 12u$(mobile) sk">
+                    <i title="javascript" class="devicon-javascript-plain colored"></i>
+                </div>
+                <div class="4u 12u$(mobile) sk">
+                    <i title="postgresql" class="devicon-postgresql-plain colored"></i>
+                </div>
+                <!-- <div class="4u 12u$(mobile) sk">
+                    <i title="php" class="devicon-php-plain colored"></i>
+                </div> -->
+                <!-- <div class="4u 12u$(mobile) sk">
+                    <i title="flask" class="devicon-mysql-plain-wordmark colored"></i>
+                </div> -->
+            </div>
+        </div>
+        <footer>
+            <a href="#about" id='next'>
+                <i class="fas fa-angle-double-down"></i>
+            </a>
+        </footer>
+    </section>
 
-				<!-- Logo -->
-				<div id="logo">
-					<img id='trapezium' src="{{ info.my_image.url }}" alt="Image" width='28%'/>
-				</div>
+    <!-- Projects -->
+    <section id="projects" class="two">
+        <div class="container">
+            <header>
+                <h2>PROJECTS</h2>
+                Some of the projects that I have been working on:
+            </header>
+            <div id="projects" class="row">
+                {% for project in projects %}
+                    <article class="item p-hover" style="background-image:url({{ project.project_screenshot.url }});">
+                        <h3>{{ project.project_name }}</h3>
+                        <header>
+                                <p>{{ project.project_description }}</p>
+                            {% if project.project_url == None %}
+                                <button disabled="disabled" id='e-link'>
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    site
+                                </button>
+                                {% else %}
+                                    <a target="_blank" href="{{ project.project_url }}">
+                                        <button id='e-link'>
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                            site
+                                        </button>
+                                    </a>
+                            {% endif %}
+                                <a target="_blank" href="{{ project.project_code.url }}">
+                                    <button id='e-link'>
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                        Code
+                                    </button>
+                                </a>
+                        </header>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+        <footer>
+            <a href="#contact" id='next'>
+                <i class="fas fa-angle-double-down"></i>
+            </a>
+        </footer>
+    </section>
 
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li>
-							<a href="#top" id="top-link" class="skel-layers-ignoreHref">
-								<span class="icon fa-home">Intro</span></a>
-						</li>
-						<li>
-							<a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref">
-								<span class="icon fa-th">Skills</span></a>
-						</li>
-						<li>
-							<a href="#about" id="about-link" class="skel-layers-ignoreHref">
-								<span class="icon fa-user">PROJECTS</span></a>
-                        </li>
-                        <li>
-							<a href="#top" id="top-link" class="skel-layers-ignoreHref">
-								<span class="icon fa-home">About Me<Meta:vp></Meta:vp></span></a>
-						</li>
-						<li>
-							<a href="#contact" id="contact-link" class="skel-layers-ignoreHref">
-								<span class="icon fa-envelope">Contact Me</span></a>
-						</li>
-					</ul>
-				</nav>
+    <!-- Contact Me-->
+    <section id="contact" class="four">
+        <div class="container">
+            <header>
+                <h2>Contact Me</h2>
+            </header>
+            <p>You can reach out to me by messaging me in the form below</p>
+            <form method="post" action="{% url 'contact' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Name"/></div>
+                    <div class="6u$ 12u$(mobile)"><input type="text" name="email" placeholder="Email" required="required"/></div>
+                    <div class="12u$">
+                        <textarea rows="4" name="message" placeholder="Message" required="required"></textarea>
+                    </div>
+                    <div class="12u$">
+                        <input type="submit" id='email-send' value="Send Message"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+</div>
+    
+<!-- Scripts -->
+<script src="/static/js/main.js"></script>
 
-			</div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
 
-			<div class="bottom">
+<script>
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('#scroll').fadeIn();
+            } else {
+                $('#scroll').fadeOut();
+            }
+        });
+        $('#scroll').click(function () {
+            $("html, body").animate({
+                scrollTop: 0
+            }, 600);
+            return false;
+        });
 
-				<!-- Social Icons -->
-				<ul class="icons">
+        $('#projects .item').each(function () {
+            $(this).hover(function () {
+                $(this).find('header').toggle()
+            });
+        });
 
-					<li>
-						<a target="_blank" href="{{ info.my_github }}" class="icon fa-github">
-							<span class="label">Github</span></a>
-					</li>
-					<!-- <li>
-						<a target="_blank" href="{{ info.my_linkedin }}" class="icon fa-linkedin-in">
-							<span class="label">LinkedIn</span></a>
-					</li> -->
-					<li>
-						<a href="mailto:{{ info.my_email }}" target="_blank" class="icon fa-envelope">
-							<span class="label">Email</span></a>
-					</li>
+        window.setTimeout(function () {
+            $("#alert-email").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 4000);
+    });
+</script>
 
-				</ul>
-
-			</div>
-
-		</div>
-
-		<!-- Main -->
-		<div id="main">
-			<a href="#" id="scroll" style="display: none;">
-				<span></span></a>
-
-			<!-- Intro -->
-			<section id="top" class="one dark cover">
-				<div class="container">
-
-					<header>
-						<!-- <div class="img"></div> -->
-						<h1 class="alt">
-							<h2>I am 
-								{{ info.my_name }}</h2>
-						</h1>
-						<h2>{{ info.my_title }}</h2>
-						based in
-                        <strong>Nairobi Kenya</strong>
-                        
-                        <p><strong>I'm a Nairobi based software developer creating awesome and effective
-                            visual identities for people from all walks of life around the globe.
-                            Let's start scrolling and learn more about me.</strong></p>
-                        
-                            <!-- <h2 id="about">About Me</h2>
-                            <h3><a href="">Back up</a></h3>
-                            <p>Just a simple lady who wants to create amazing stuff-</p><br/>
-                            <p>That pretty much sums it up.Whether it's solving a complex design problem,or just fixing the kettle at home, I aim for intuitive solutions that will improve the lives around me.I am currently studying software development at Moringa School.Prior to
-                              this have worked in various fields like travel and tours,marketing and was an entrepreneur ...Oh,and I love teaching myself new concepts like HTML and CSS,so I developed this site myself with code only a mother could love.</p> -->
-                          </div>
-					</header>
-					<footer>
-						<a href="#portfolio" id='next'>
-							<i class="fas fa-angle-double-down"></i>
-						</a>
-					</footer>
-
-				</div>
-			</section>
-
-			<!-- Portfolio -->
-			<section id="portfolio" class="two">
-				<div class="container">
-
-					<header>
-						<h2>WHAT I DO</h2>
-						Some of the skills that am competent in :
-					</header>
-					<div class="row">
-
-						<div class="4u 12u$(mobile) sk">
-
-							<i title="python" class="devicon-python-plain colored"></i>
-
-						</div>
-						<div class="4u 12u$(mobile) sk">
-
-							<i title="django framework" class="devicon-django-plain colored"></i>
-
-						</div>
-						<div class="4u 12u$(mobile) sk">
-
-							<i title="javascript" class="devicon-javascript-plain colored"></i>
-
-						</div>
-						<div class="4u 12u$(mobile) sk">
-
-							<i title="postgresql" class="devicon-postgresql-plain colored"></i>
-
-						</div>
-						<!-- <div class="4u 12u$(mobile) sk">
-
-							<i title="php" class="devicon-php-plain colored"></i>
-
-						</div> -->
-						<!-- <div class="4u 12u$(mobile) sk">
-
-							<i title="flask" class="devicon-mysql-plain-wordmark colored"></i>
-
-						</div> -->
-
-					</div>
-
-				</div>
-				<footer>
-					<a href="#about" id='next'>
-						<i class="fas fa-angle-double-down"></i>
-					</a>
-				</footer>
-			</section>
-
-			<section id="about" class="two">
-				<div class="container">
-
-					<header>
-						<h2>PROJECTS</h2>
-						Some of the projects that I have been working on:
-					</header>
-					<div id="projects" class="row">
-						{% for project in projects %}
-
-							<article class="item p-hover" style="background-image:url({{ project.project_screenshot.url }});">
-								<h3>{{ project.project_name }}</h3>
-								<header>
-									<p>{{ project.project_description }}</p>
-									{% if project.project_url == None %}
-										<button disabled="disabled" id='e-link'>
-											<i class="fa fa-eye" aria-hidden="true"></i>
-											site
-										</button>
-									{% else %}
-										<a target="_blank" href="{{ project.project_url }}">
-											<button id='e-link'>
-												<i class="fa fa-eye" aria-hidden="true"></i>
-												site
-											</button>
-										</a>
-									{% endif %}
-									<a target="_blank" href="{{ project.project_code.url }}">
-										<button id='e-link'>
-											<i class="fa fa-eye" aria-hidden="true"></i>
-											Code
-										</button>
-									</a>
-								</header>
-							</article>
-
-						{% endfor %}
-					</div>
-
-				</div>
-				<footer>
-					<a href="#contact" id='next'>
-						<i class="fas fa-angle-double-down"></i>
-					</a>
-				</footer>
-			</section>
-
-			<!-- Contact -->
-			<section id="contact" class="four">
-				<div class="container">
-
-					<header>
-						<h2>Contact Me</h2>
-					</header>
-
-					<form method="post" action="{% url 'contact' %}">
-						{% csrf_token %}
-						<div class="row">
-							<div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Name"/></div>
-							<div class="6u$ 12u$(mobile)"><input type="text" name="email" placeholder="Email" required="required"/></div>
-							<div class="12u$">
-								<textarea rows="4" name="message" placeholder="Message" required="required"></textarea>
-							</div>
-							<div class="12u$">
-								<input type="submit" id='email-send' value="Send Message"/>
-							</div>
-						</div>
-					</form>
-
-				</div>
-			</section>
-
-		</div>
-
-		<!-- Scripts -->
-		<script src="{% static 'js/jquery.min.js' %}"></script>
-
-		<script>
-			$(document).ready(function () {
-				$(window).scroll(function () {
-					if ($(this).scrollTop() > 100) {
-						$('#scroll').fadeIn();
-					} else {
-						$('#scroll').fadeOut();
-					}
-				});
-				$('#scroll').click(function () {
-					$("html, body").animate({
-						scrollTop: 0
-					}, 600);
-					return false;
-				});
-
-				$('#projects .item').each(function () {
-					$(this).hover(function () {
-						$(this).find('header').toggle()
-					});
-				});
-
-				window.setTimeout(function () {
-					$("#alert-email").fadeTo(500, 0).slideUp(500, function () {
-						$(this).remove();
-					});
-				}, 4000);
-			});
-		</script>
-
-		<script src="{% static 'js/jquery.scrolly.min.js' %}"></script>
-		<script src="{% static 'js/jquery.scrollzer.min.js' %}"></script>
-		<script src="{% static 'js/skel.min.js' %}"></script>
-		<script src="{% static 'js/util.js' %}"></script>
-		<!--[if lte IE 8]><script src="{% static 'js/ie/respond.min.js' %}"></script><![endif]-->
-		<script src="{% static 'js/main.js' %}"></script>
-
-	</body>
-</html>
+<script src="{% static 'js/jquery.scrolly.min.js' %}"></script>
+<script src="{% static 'js/jquery.scrollzer.min.js' %}"></script>
+<script src="{% static 'js/skel.min.js' %}"></script>
+<script src="{% static 'js/util.js' %}"></script>
+<!--[if lte IE 8]><script src="{% static 'js/ie/respond.min.js' %}"></script><![endif]-->
+<script src="{% static 'js/main.js' %}"></script>
+     
+</body>
+</html> 
