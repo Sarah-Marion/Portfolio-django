@@ -15,7 +15,7 @@ def index(request):
     for i in infos:
         cv = i
         
-    return render(request, 'index.html',{'title': title, 'projects': projects, 'cv': cv, 'info': infos, 'technique': technique})
+    return render(request, 'index.html',{'title': title, 'projects': projects, 'cv': cv, 'info': info, 'technique': technique})
 
 
 def contact(request):

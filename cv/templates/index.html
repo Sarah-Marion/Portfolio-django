@@ -1,4 +1,5 @@
 {% load static %}
+{% load bootstrap3 %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,13 +23,16 @@
     <!--[if lte IE 9]><link rel="stylesheet" href="{% static 'css/ie9.css' %}" /><![endif]-->
     <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.css">
+    <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
+		 -->
 </head>
 
 <body>
     <div id="mySidenav" class="sidenav">
         <!-- Logo -->
         <div id="logo">
-            <img id='trapezium' src="{{ info.my_image.url }}" alt="my pic" width='28%'/>
+            <img id='trapezium' src="{{ info.my_image.cdn_url }}" alt="my pic" width='28%'/>
         </div>
         <!-- Sidenav -->
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -78,8 +82,7 @@
        color: rgb(122, 24, 109);
        left: 50px;
        top: 60px;" onclick="openNav()">&#9776;</span>
-    <a href="#" id="scroll" style="display: none;">
-        <span></span></a>
+    <a href="#" id="scroll" style="display: none;"><span></span></a>
 
         <!-- Intro -->
         <section id="top" class="one dark cover">
@@ -102,19 +105,28 @@
                                 <i class="fas fa-angle-double-down"></i>
                             </a>
                         </footer>
-                    
-                    <h2 id="about">About Me</h2>
-                    <p>Just a simple lady who wants to create amazing stuff-</p><br/>
-                    <p>That pretty much sums it up.Whether it's solving a complex design problem,or just fixing the kettle at home, I aim for intuitive solutions that will improve the lives around me.I am currently studying software development at Moringa School.Prior to
-                        this, I have worked in various fields like travel and tours,marketing and was an entrepreneur ...Oh,and I love teaching myself new concepts like Django and Flask,so I developed this site myself with code only a mother could love.</p>
-                </header>
-                <footer>
-                    <a href="#portfolio" id='next'>
-                        <i class="fas fa-angle-double-down"></i>
-                    </a>
-                </footer>
-            </div>
+                </header> 
+            </div>           
         </section>
+
+        <section id="top2" class="one dark cover">
+            <div class="container">
+                    <div class="row">
+                            <h2 id="about">About Me</h2>
+                        
+                        <p>Just a simple lady who wants to create amazing stuff-</p><br/>
+                        <p>That pretty much sums it up.Whether it's solving a complex design problem,or just fixing the kettle at home, I aim for intuitive solutions that will improve the lives around me.I am currently studying software development at Moringa School.Prior to
+                            this, I have worked in various fields like travel and tours,marketing and was an entrepreneur ...Oh,and I love teaching myself new concepts like Django and Flask,so I developed this site myself with code only a mother could love.</p>
+                    
+                        <footer>
+                            <a href="#portfolio" id='next'>
+                                <i class="fas fa-angle-double-down"></i>
+                            </a>
+                        </footer>
+                    </div>
+                </div>
+        </section>
+
 
     <!-- Portfolio -->
     <section id="portfolio" class="two">
@@ -160,7 +172,7 @@
             </header>
             <div id="projects" class="row">
                 {% for project in projects %}
-                    <article class="item p-hover" style="background-image:url({{ project.project_screenshot.url }});">
+                    <article class="item p-hover" style="background-image:url({{ project.project_screenshot.cdn_url }});">
                         <h3>{{ project.project_name }}</h3>
                         <header>
                                 <p>{{ project.project_description }}</p>
