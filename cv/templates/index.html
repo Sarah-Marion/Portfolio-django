@@ -16,6 +16,8 @@
     <!-- Mobile Specific Metas –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    {% block styles %}
+    {% bootstrap_css %}
     <!-- [if lte IE 8]><script src="{% static 'js/ie/html5shiv.js' %}"></script><![endif] -->
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -26,6 +28,7 @@
     <!-- <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.css">
     <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
 		 -->
+    {% endblock %}
 </head>
 
 <body>
@@ -112,17 +115,19 @@
         <section id="top2" class="one dark cover">
             <div class="container">
                     <div class="row">
+                        <div class="col-md-12">
                             <h2 id="about">About Me</h2>
-                        
-                        <p>Just a simple lady who wants to create amazing stuff-</p><br/>
-                        <p>That pretty much sums it up.Whether it's solving a complex design problem,or just fixing the kettle at home, I aim for intuitive solutions that will improve the lives around me.I am currently studying software development at Moringa School.Prior to
-                            this, I have worked in various fields like travel and tours,marketing and was an entrepreneur ...Oh,and I love teaching myself new concepts like Django and Flask,so I developed this site myself with code only a mother could love.</p>
-                    
-                        <footer>
+                        </div> 
+                        <div class="col-md-12" style="color: black;">                       
+                            <p>Just a simple lady who wants to create amazing stuff-</p><br/>
+                            <p>That pretty much sums it up.Whether it's solving a complex design problem,or just fixing the kettle at home, I aim for intuitive solutions that will improve the lives around me.I am currently studying software development at Moringa School.Prior to
+                                this, I have worked in various fields like travel and tours,marketing and was an entrepreneur ...Oh,and I love teaching myself new concepts like Django and Flask,so I developed this site myself with code only a mother could love.</p>
+                        </div>
+                        <div class="col-md-12 text-center">
                             <a href="#portfolio" id='next'>
                                 <i class="fas fa-angle-double-down"></i>
                             </a>
-                        </footer>
+                        </div>
                     </div>
                 </div>
         </section>
@@ -136,31 +141,42 @@
                 Some of the languages and frameworks that I'm proficient in include :
             </header>
             <div class="row">
+                <div class="col-md-4">
                 <div class="4u 12u$(mobile) sk">
                     <i title="python" class="devicon-python-plain colored"></i>
                 </div>
+                </div>
+                <div class="col-md-4">
                 <div class="4u 12u$(mobile) sk">
                     <i title="django framework" class="devicon-django-plain colored"></i>
                 </div>
-                <div class="4u 12u$(mobile) sk">
-                    <i title="javascript" class="devicon-javascript-plain colored"></i>
                 </div>
+                <div class="col-md-4">
                 <div class="4u 12u$(mobile) sk">
                     <i title="postgresql" class="devicon-postgresql-plain colored"></i>
                 </div>
-                <!-- <div class="4u 12u$(mobile) sk">
-                    <i title="php" class="devicon-php-plain colored"></i>
-                </div> -->
-                <!-- <div class="4u 12u$(mobile) sk">
-                    <i title="flask" class="devicon-mysql-plain-wordmark colored"></i>
-                </div> -->
+                </div>
+                <div class="col-md-4">
+                    <img src="http://angularjs.oscitas.netdna-cdn.com/wp-content/themes/angularjsrain/images/logo.png" alt="angularjs" style="width: 100%;">
+                <div class="4u 12u$(mobile) sk">
+                    <i title="angular" class="devicon-angular-plain-colored"></i>
+                </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="http://flask.pocoo.org/static/logo/flask.png" alt="flask" style="width: 100%;">
+                </div>
+                <div class="col-md-4">
+                <div class="4u 12u$(mobile) sk">
+                    <i title="bootstrap" class="devicon-bootstrap-plain-colored"></i>
+                </div>
+                </div>
             </div>
         </div>
-        <footer>
-            <a href="#about" id='next'>
+        <div class="col-md-12 text-center">
+            <a href="#projects" id='next'>
                 <i class="fas fa-angle-double-down"></i>
             </a>
-        </footer>
+        </div>
     </section>
 
     <!-- Projects -->
@@ -172,31 +188,39 @@
             </header>
             <div id="projects" class="row">
                 {% for project in projects %}
-                    <article class="item p-hover" style="background-image:url({{ project.project_screenshot.cdn_url }});">
-                        <h3>{{ project.project_name }}</h3>
-                        <header>
-                                <p>{{ project.project_description }}</p>
-                            {% if project.project_url == None %}
-                                <button disabled="disabled" id='e-link'>
-                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                    site
-                                </button>
-                                {% else %}
-                                    <a target="_blank" href="{{ project.project_url }}">
-                                        <button id='e-link'>
-                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                            site
-                                        </button>
-                                    </a>
-                            {% endif %}
-                                <a target="_blank" href="{{ project.project_code.url }}">
+                <div class="col-md-6">
+                    <article class="item p-hover">
+                        <img src="{{ project.project_screenshot.cdn_url }}" alt="project" style="width: 100%">
+                    </article>
+                </div>
+                <div class="col-md-6"> 
+                    <h3>{{ project.project_name }}</h3>
+                    <header>
+                            <!-- <h3>{{ project.project_name }}</h3> -->
+                            <hr>
+                            <p>{{ project.project_description }}</p>
+                            <hr>
+                        {% if project.project_url == None %}
+                            <button disabled="disabled" id='e-link'>
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                site
+                            </button>
+                            {% else %}
+                                <a target="_blank" href="{{ project.project_url }}">
                                     <button id='e-link'>
                                         <i class="fa fa-eye" aria-hidden="true"></i>
-                                        Code
+                                        site
                                     </button>
                                 </a>
-                        </header>
-                    </article>
+                        {% endif %}
+                            <a target="_blank" href="{{ project.project_code }}">
+                                <button id='e-link'>
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    Code
+                                </button>
+                            </a>
+                    </header>
+                </div>
                 {% endfor %}
             </div>
         </div>
@@ -253,11 +277,6 @@
             return false;
         });
 
-        $('#projects .item').each(function () {
-            $(this).hover(function () {
-                $(this).find('header').toggle()
-            });
-        });
 
         window.setTimeout(function () {
             $("#alert-email").fadeTo(500, 0).slideUp(500, function () {
