@@ -186,8 +186,9 @@
                 <h2>PROJECTS</h2>
                 Some of the projects that I have been working on:
             </header>
-            <div id="projects" class="row">
+            <div id="projects">
                 {% for project in projects %}
+                <div class="row">
                 <div class="col-md-6">
                     <article class="item p-hover">
                         <img src="{{ project.project_screenshot.cdn_url }}" alt="project" style="width: 100%">
@@ -221,6 +222,7 @@
                             </a>
                     </header>
                 </div>
+            </div>
                 {% endfor %}
             </div>
         </div>
