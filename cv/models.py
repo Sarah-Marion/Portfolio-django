@@ -16,6 +16,9 @@ class Project(models.Model):
 
     def __str__(self):
         return str(self.project_name)
+    class Meta:
+        ordering = ('-id',)
+
 
 class Cv(models.Model):
     """
