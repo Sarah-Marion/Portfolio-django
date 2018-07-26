@@ -15,9 +15,9 @@ class Project(models.Model):
     project_description = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
-        return str(self.project_name)
+        return str(self.id)
     class Meta:
-        ordering = ('-id',)
+        ordering = ('id',)
 
 
 class Cv(models.Model):
